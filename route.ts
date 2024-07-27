@@ -5,6 +5,7 @@
  */
 export const publicRoutes: string[] = [
   "/",
+  "/resume",
   "/work",
   "/blog",
   "/guestbook",

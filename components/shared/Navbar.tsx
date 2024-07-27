@@ -3,6 +3,7 @@ import Link from "next/link";
 import ModeToggle from "@/components/shared/ModeToggle";
 import { useTheme } from "next-themes";
 import { Spotlight } from "../ui/spotlight";
+import { useEffect } from "react";
 
 const navItems = {
   "/": {
@@ -11,21 +12,24 @@ const navItems = {
   "/work": {
     name: "work",
   },
-  "/blog": {
-    name: "blog",
+  "/resume": {
+    name: "resume",
   },
-  "/guestbook": {
-    name: "guestbook",
-  },
+  // "/blog": {
+  //   name: "blog",
+  // },
+  // "/guestbook": {
+  //   name: "guestbook",
+  // },
 };
 
 export default function Navbar() {
   let { theme } = useTheme();
   let fillColor = "white";
-  if (theme === undefined) {
+  if (theme === undefined || theme === "system") {
     theme = "dark";
-  }
-  if (theme === "light") {
+    fillColor = "white";
+  } else if (theme === "light") {
     fillColor = "purple";
   }
   return (
