@@ -5,12 +5,10 @@ import LinkedBadge from "@/components/shared/LinkedBadge";
 import { SiRust, SiShadcnui } from "react-icons/si";
 import { BiLogoGoLang } from "react-icons/bi";
 import Image from "next/image";
-import { ArrowUpRight, ExternalLink, Icon } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import doit from "@/public/doit.png";
-import { Button } from "@/components/ui/button";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
+import { Icon } from "@/components/ui/evervault-card";
 
 const languagesAndTools = [
   {
@@ -126,7 +124,7 @@ const languagesAndTools = [
     href: "https://djangoproject.com/",
   },
   {
-    name: "Python",
+    name: "Python for Django",
     type: ["language"],
     Icon: (
       <Image
@@ -234,6 +232,34 @@ const languagesAndTools = [
       />
     ),
     href: "#",
+  },
+  {
+    name: "zod",
+    type: ["library", "framework", "current"],
+    Icon: (
+      <Image
+        src="https://zod.dev/logo.svg"
+        className="size-4 mr-1"
+        width={16}
+        height={16}
+        alt="html"
+      />
+    ),
+    href: "https://zod.dev/",
+  },
+  {
+    name: "NextAuth.js",
+    type: ["library", "framework", "authentication", "current"],
+    Icon: (
+      <Image
+        src="https://next-auth.js.org/img/logo/logo-xs.png"
+        className="size-4 mr-1"
+        width={16}
+        height={16}
+        alt="html"
+      />
+    ),
+    href: "https://next-auth.js.org/",
   },
   {
     name: "MongoDB",
@@ -345,13 +371,15 @@ export default function Homepage() {
   return (
     <>
       {/* <HomePage /> */}
-      <span className="text-xl">hey, I'm Bharath 👋🏻</span>
+      <span className="text-xl dark:text-gray-300 text-gray-900">
+        hey, I'm Bharath 👋🏻
+      </span>
       {/* <Separator className="mt-5 bg-[#111010] dark:bg-gray-200 " /> */}
-      <div className="inline-block mt-7 text-sm">
+      <div className="inline-block mt-7 text-sm dark:text-gray-300 text-gray-900">
         I'm an aspiring software engineer and a full-stack developer. I love to{" "}
         <Link
           className="dark:text-gray-200 dark:underline underline underline-offset-2 font-medium inline-flex align-middle px-1"
-          href="#last"
+          href="/work"
         >
           build
           <ArrowUpRight className="size-5 group-hover:-rotate-[30deg]" />
@@ -485,66 +513,78 @@ export default function Homepage() {
         <div className="mt-10">
           Notable work and projects using current tech stack
           <div className="grid md:grid-cols-2 gap-5 mt-3 w-full justify-center items-center">
-            <Link
-              href="https://doit-io.vercel.app"
-              className="flex items-center gap-2 max-w-[300px] md:max-w-[350px]"
-              target="_blank"
-            >
-              <div className="flex items-center justify-between px-5 gap-3 min-w-[320px] md:min-w-[300px] min-h-[60px] dark:bg-[#262626] bg-gray-300 rounded-md">
-                <Avatar>
-                  <div className="flex items-center justify-center w-full h-full dark:bg-gray-300 bg-gray-100 rounded-full">
-                    <AvatarImage
-                      src="/doit.png"
-                      alt="doit"
-                      className="size-6"
-                    />
+            <div className="border border-black/[0.2] dark:border-white/[0.2] bg-white/15 dark:bg-black/15 backdrop:blur-xl flex flex-col items-start min-w-full mx-auto relative">
+              <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
+              <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
+              <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
+              <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
+              <Link
+                href="https://doit-io.vercel.app"
+                className="flex items-center gap-2 w-full text-gray-200 bg-white/5 backdrop:blur-lg dark:text-gray-100  border-dashed rounded-md"
+                target="_blank"
+              >
+                <div className="flex items-center justify-between px-5 gap-3 w-full min-h-[60px] rounded-md">
+                  <Avatar>
+                    <div className="flex items-center justify-center w-full h-full dark:bg-gray-300 bg-gray-100 rounded-full">
+                      <AvatarImage
+                        src="/doit.png"
+                        alt="doit"
+                        className="size-6"
+                      />
+                    </div>
+                    <AvatarFallback className="flex items-center justify-center w-full h-full -ml-10">
+                      <ExternalLink className="size-4 dark:text-white text-black" />
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="flex justify-between items-center min-w-[250px] md:min-w-[150px] md:gap-12">
+                    <div className="dark:text-white text-black font-medium flex flex-col ">
+                      <span className="text-lg md:text-sm ">
+                        task management app
+                      </span>
+                      <span className="text-sm md:text-xs dark:text-gray-300 text-gray-600">
+                        doit-io
+                      </span>
+                    </div>
+                    <ArrowTopRightIcon className="size-8 dark:text-gray-400 text-gray-600 group-hover:text-gray-100 transform transition-transform duration-300" />
                   </div>
-                  <AvatarFallback className="flex items-center justify-center w-full h-full -ml-10">
-                    <ExternalLink className="size-4 dark:text-white text-black" />
-                  </AvatarFallback>
-                </Avatar>
-                <div className="flex justify-between items-center min-w-[250px] md:min-w-[150px] md:gap-12">
-                  <div className="dark:text-white text-black font-medium flex flex-col ">
-                    <span className="text-lg md:text-sm ">
-                      Task Management App
-                    </span>
-                    <span className="text-sm md:text-xs dark:text-gray-300 text-gray-600">
-                      doit-io
-                    </span>
-                  </div>
-                  <ArrowTopRightIcon className="size-8 dark:text-gray-400 text-gray-600 group-hover:text-gray-100 transform transition-transform duration-300" />
                 </div>
-              </div>
-            </Link>
-            <Link
-              href="https://lbh-io.vercel.app"
-              className="flex items-center gap-2"
-              target="_blank"
-            >
-              <div className="flex items-center justify-between px-5 min-w-[320px] gap-1 md:min-w-[300px] min-h-[60px] dark:bg-[#262626] bg-gray-300 rounded-md">
-                <Avatar>
-                  <div className="flex items-center justify-center w-full h-full">
-                    <AvatarImage
-                      src="/favicon.ico"
-                      alt="doit"
-                      className="size-6"
-                    />
+              </Link>
+            </div>
+            <div className="border border-black/[0.2] dark:border-white/[0.2] bg-white/15 dark:bg-black/15 backdrop:blur-xl flex flex-col items-start min-w-full mx-auto relative">
+              <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
+              <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
+              <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
+              <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
+              <Link
+                href="https://lbh-io.vercel.app"
+                className="flex items-center gap-2 w-full text-gray-200 bg-white/5 backdrop:blur-lg dark:text-gray-100  border-dashed rounded-md"
+                target="_blank"
+              >
+                <div className="flex items-center justify-between px-5 gap-1 w-full min-h-[60px] rounded-md">
+                  <Avatar>
+                    <div className="flex items-center justify-center w-full h-full">
+                      <AvatarImage
+                        src="/favicon.ico"
+                        alt="doit"
+                        className="size-6"
+                      />
+                    </div>
+                    <AvatarFallback className="flex items-center justify-center w-full h-full -ml-10">
+                      <ExternalLink className="size-4 dark:text-white text-black" />
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="flex justify-between items-center min-w-[250px] md:min-w-[200px] md:gap-12">
+                    <div className="dark:text-white text-black font-medium flex flex-col ">
+                      <span className="text-lg md:text-sm ">portfolio</span>
+                      <span className="text-sm md:text-xs dark:text-gray-300 text-gray-600">
+                        lbh-io
+                      </span>
+                    </div>
+                    <ArrowTopRightIcon className="size-8 dark:text-gray-400 text-gray-600 group-hover:text-gray-100 transform transition-transform duration-300" />
                   </div>
-                  <AvatarFallback className="flex items-center justify-center w-full h-full -ml-10">
-                    <ExternalLink className="size-4 dark:text-white text-black" />
-                  </AvatarFallback>
-                </Avatar>
-                <div className="flex justify-between items-center min-w-[250px] md:min-w-[200px] md:gap-12">
-                  <div className="dark:text-white text-black font-medium flex flex-col ">
-                    <span className="text-lg md:text-sm ">Portfolio</span>
-                    <span className="text-sm md:text-xs dark:text-gray-300 text-gray-600">
-                      lbh-io
-                    </span>
-                  </div>
-                  <ArrowTopRightIcon className="size-8 dark:text-gray-400 text-gray-600 group-hover:text-gray-100 transform transition-transform duration-300" />
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           </div>
           <div className="flex w-full justify-start text-xs mt-2">
             <div>you can learn more about my work</div>
@@ -555,22 +595,6 @@ export default function Homepage() {
               here
               <ArrowUpRight className="size-5 group-hover:-rotate-[30deg]" />
             </Link>
-          </div>
-        </div>
-        <div className="mt-10">
-          My scope of interest:
-          <div className="flex flex-wrap gap-4 mt-3">
-            {languagesAndTools
-              .filter((language) => language.type.includes("learn"))
-              .map((language) => (
-                <LinkedBadge
-                  key={language.name}
-                  href={language.href}
-                  Icon={language.Icon}
-                  name={language.name}
-                  className="border text-xs md:text-sm border-gray-800 dark:border-gray-300 text-gray-200 bg-gray-300 dark:text-gray-100 dark:bg-[#262626] px-2 py-1 rounded-md"
-                />
-              ))}
           </div>
         </div>
         <div className="mt-7">
@@ -625,6 +649,22 @@ export default function Homepage() {
                   className="border text-xs md:text-sm border-gray-800 dark:border-gray-300 text-gray-200 bg-gray-300 dark:text-gray-100 dark:bg-[#262626] px-2 py-1 rounded-md"
                 />
               ))}
+          </div>
+          <div className="mt-10">
+            My scope of interest:
+            <div className="flex flex-wrap gap-4 mt-3">
+              {languagesAndTools
+                .filter((language) => language.type.includes("learn"))
+                .map((language) => (
+                  <LinkedBadge
+                    key={language.name}
+                    href={language.href}
+                    Icon={language.Icon}
+                    name={language.name}
+                    className="border text-xs md:text-sm border-gray-800 dark:border-gray-300 text-gray-200 bg-gray-300 dark:text-gray-100 dark:bg-[#262626] px-2 py-1 rounded-md"
+                  />
+                ))}
+            </div>
           </div>
           <div id="last" className="mt-7">
             <span>

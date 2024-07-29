@@ -12,9 +12,9 @@ const navItems = {
   "/work": {
     name: "work",
   },
-  "/resume": {
-    name: "resume",
-  },
+  // "/resume": {
+  //   name: "resume",
+  // },
   // "/blog": {
   //   name: "blog",
   // },
@@ -24,9 +24,14 @@ const navItems = {
 };
 
 export default function Navbar() {
-  let { theme } = useTheme();
+  let { theme, resolvedTheme } = useTheme();
   let fillColor = "white";
-  if (theme === undefined || theme === "system") {
+  if (
+    theme === undefined ||
+    theme === "system" ||
+    resolvedTheme === undefined ||
+    resolvedTheme === "system"
+  ) {
     theme = "dark";
     fillColor = "white";
   } else if (theme === "light") {
@@ -35,7 +40,7 @@ export default function Navbar() {
   return (
     <>
       <Spotlight
-        className="-top-40 left-0 md:left-60 md:-top-20"
+        className="-top-40 left-0 md:left-60 md:-top-20 fixed -z-10"
         fill={fillColor}
       />
       <aside className="-ml-[8px] mb-16 tracking-tight">
@@ -57,6 +62,13 @@ export default function Navbar() {
                     </Link>
                   );
                 })}
+                <Link
+                  href="https://drive.google.com/file/d/1X-ukshNUg5T-GkOQ9dB9yd_MibuKRPul/view?usp=sharing"
+                  target="_blank"
+                  className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2"
+                >
+                  resume
+                </Link>
               </div>
               <ModeToggle />
             </div>

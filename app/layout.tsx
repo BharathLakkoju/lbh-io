@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import { ThemeProvider } from "next-themes";
+import Footer from "@/components/shared/Footer";
 
 const cx = (...classes: any[]) => classes.filter(Boolean).join(" ");
 
@@ -28,7 +29,7 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
@@ -36,6 +37,7 @@ export default function RootLayout({
           <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
             {children}
           </main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
